@@ -14,6 +14,10 @@
 | Deployment  | Move app to servers (live environment)       |
 | Maintenance | Fix bugs and update features post-deployment |
 
+![image](https://github.com/user-attachments/assets/029b3320-8ff0-42ac-ac9c-43f6c2241334)
+
+![image](https://github.com/user-attachments/assets/f4a186e8-fcf0-446f-a75b-f0a425c1957d)
+
 ---
 
 
