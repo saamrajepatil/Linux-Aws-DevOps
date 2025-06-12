@@ -3,37 +3,7 @@
 
 ---
 
-### 🧭 1. **What is a Server?**
-
-* A **server** is a powerful computer that provides **resources, services, or data** to other computers (clients) over a network.
-* Examples of servers:
-
-  * Web server → hosts websites (like YouTube)
-  * File server → stores and shares files
-  * Database server → stores structured data (MySQL, PostgreSQL)
-
-**Why do we need servers?**
-
-* To run applications 24/7 (e.g., Gmail, Flipkart)
-* To allow **multiple users** to access shared resources
-* To centralize computing, storage, and control
-
----
-
-### 🐧 2. **Why Linux Server?**
-
-* **Linux** is a free and open-source operating system, preferred in servers for:
-
-  * **Stability and Performance**
-  * **Security**
-  * **Customization**
-  * **Community Support**
-  * Used in **90% of cloud servers**, including AWS, Azure, and GCP
-* Most **DevOps tools** run natively on Linux (Docker, Jenkins, Kubernetes, etc.)
-
----
-
-### 🔄 3. **What is SDLC (Software Development Life Cycle)?**
+### 🔄 1. **What is SDLC (Software Development Life Cycle)?**
 
 | Phase       | Description                                  |
 | ----------- | -------------------------------------------- |
@@ -46,7 +16,8 @@
 
 ---
 
-### ⚙️ 4. **What is DevOps?**
+
+### ⚙️ 2. **What is DevOps?**
 
 * **DevOps** = Development + Operations
 * A **culture and set of tools/practices** to:
@@ -64,7 +35,7 @@
 
 ---
 
-### 👨‍💻 5. **DevOps Engineer Role**
+### 👨‍💻 3. **DevOps Engineer Role**
 
 * Setup and manage:
 
@@ -75,10 +46,9 @@
   * Orchestration (Kubernetes)
   * Cloud Infrastructure (AWS, Azure)
   * Monitoring (ELK, Prometheus, Grafana)
-
 ---
 
-### 🌐 6. **Why Learn Linux First?**
+### 🌐 4. **Why Learn Linux First?**
 
 Because:
 
@@ -90,6 +60,39 @@ Because:
   * File systems
   * Services
   * Logs
+ ---
+
+
+
+### 🧭 5. **What is a Server?**
+
+* A **server** is a powerful computer that provides **resources, services, or data** to other computers (clients) over a network.
+* Examples of servers:
+
+  * Web server → hosts websites (like YouTube)
+  * File server → stores and shares files
+  * Database server → stores structured data (MySQL, PostgreSQL)
+ 
+ ---
+
+**Why do we need servers?**
+
+* To run applications 24/7 (e.g., Gmail, Flipkart)
+* To allow **multiple users** to access shared resources
+* To centralize computing, storage, and control
+
+---
+
+### 🐧 6. **Why Linux Server?**
+
+* **Linux** is a free and open-source operating system, preferred in servers for:
+
+  * **Stability and Performance**
+  * **Security**
+  * **Customization**
+  * **Community Support**
+  * Used in **90% of cloud servers**, including AWS, Azure, and GCP
+* Most **DevOps tools** run natively on Linux (Docker, Jenkins, Kubernetes, etc.)
 
 ---
 
