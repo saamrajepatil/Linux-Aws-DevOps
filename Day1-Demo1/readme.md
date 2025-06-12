@@ -141,12 +141,15 @@ Use an EC2 instance or local VM:
 
 ### ✅ 10. **Closing**
 
-* Share your batch plan:
+* Batch plan:
 
-  * Week 1: Linux + Git
-  * Week 2–3: AWS core
-  * Week 4–5: Docker, Jenkins
-  * Week 6–7: Kubernetes, Monitoring
-  * Final Week: Real-time Projects + Interview Prep
-
+  * Week 1-2: Linux + Shell scripting
+  Assignments + Mock interview on Linux
+  * Week 3–4: AWS core
+  Assignments + Mock Interview on AWS
+  * Week 5-6: Devops
+  Assignments + Mock Interview on DevOps
+  * Week 7 : Realtime Projects
+  * Week 8 : Resume + Naukri + LinkedIn profile
+  * Week 9 : Interview Prep + Guidanace
 
