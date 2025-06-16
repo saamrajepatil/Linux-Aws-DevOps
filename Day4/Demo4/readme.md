@@ -1,5 +1,5 @@
 
-## ✅ Suggested Topics for AWS Demo 4 (other than EC2):
+## ✅ AWS Demo 4 :
 
 ### 1. **S3 – Simple Storage Service**
 
