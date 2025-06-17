@@ -42,6 +42,8 @@ Use an analogy:
 * Build steps
 * Console Output
 
+![image](https://github.com/user-attachments/assets/4225565b-e273-4849-9239-e342ae8c743f)
+
 ---
 
 ### 🔹 **4. Git + GitHub + Jenkins Integration **
