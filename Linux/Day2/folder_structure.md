@@ -1,7 +1,7 @@
 # Understanding the Folder Structure
 
 ### Explanation of System Directories
-
+ls -d /*/
 ### **Symbolic Links (Less Significant)**
 | Directory | Description |
 |-----------|-------------|
