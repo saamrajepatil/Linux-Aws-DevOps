@@ -4,17 +4,11 @@ Linux Booting Process:
 
 ![image](https://github.com/user-attachments/assets/2cf203ff-fd8a-440e-8f1e-d05144c679c3)
 
-Here's your content formatted with **bullet points and headings**, ready for `README.md`:
-
----
 
 # 🐧 Linux Booting Process
 
 The booting process in Linux involves several stages, starting from system power-on to loading the operating system. Understanding this is crucial for troubleshooting and system management.
 
-### 🧭 Booting Stages in Linux:
-
-![Linux Booting Diagram](https://github.com/user-attachments/assets/2cf203ff-fd8a-440e-8f1e-d05144c679c3)
 
 * **BIOS/UEFI Initialization**
 
