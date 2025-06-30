@@ -4,38 +4,84 @@ Linux Booting Process:
 
 ![image](https://github.com/user-attachments/assets/2cf203ff-fd8a-440e-8f1e-d05144c679c3)
 
+Here's your content formatted with **bullet points and headings**, ready for `README.md`:
 
-BIOS/UEFI Initialization: When the system is powered on, the Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI) initializes hardware components and performs a Power-On Self Test (POST).
+---
 
-Boot Loader: The boot loader, such as GRUB (Grand Unified Bootloader), is loaded into memory. It presents a menu to select the operating system and loads the kernel into memory.
+# 🐧 Linux Booting Process
 
-Kernel Initialization: The Linux kernel is loaded and initialized. It sets up system memory, detects hardware, and mounts the root filesystem.
+The booting process in Linux involves several stages, starting from system power-on to loading the operating system. Understanding this is crucial for troubleshooting and system management.
 
-Init System: The init system, like systemd, takes over from the kernel to manage system processes. It reads configuration files and starts services.
+### 🧭 Booting Stages in Linux:
 
-Runlevel/Target: The system enters a specific runlevel or target, which defines the state of the machine (like multi-user mode or graphical mode).
+![Linux Booting Diagram](https://github.com/user-attachments/assets/2cf203ff-fd8a-440e-8f1e-d05144c679c3)
 
-Different Targets in Linux
+* **BIOS/UEFI Initialization**
 
-Linux systems using systemd have different targets that define the state of the system:
+  * When the system is powered on, the **BIOS** (Basic Input/Output System) or **UEFI** (Unified Extensible Firmware Interface) initializes hardware and performs **POST** (Power-On Self Test).
 
-graphical.target: Starts the system with a graphical user interface.
-multi-user.target: Provides a multi-user environment without a graphical interface.
-rescue.target: Boots into a single-user mode for maintenance.
-emergency.target: Provides minimal environment for emergency situations.
+* **Boot Loader**
 
-Viewing and Changing Default Target
+  * A boot loader like **GRUB (Grand Unified Bootloader)** is loaded.
+  * It shows the OS selection menu and loads the **Linux kernel** into memory.
 
-To see the default target in a Linux system using systemd, you can use the following command:
+* **Kernel Initialization**
 
-systemctl get-default
+  * The Linux **kernel** is initialized.
+  * It sets up system memory, detects hardware, and mounts the **root filesystem**.
 
-To change the default target, use:
+* **Init System**
 
-sudo systemctl set-default <target>
+  * The **init system** (e.g., `systemd`) takes control.
+  * It reads configuration files and starts system **services and processes**.
 
-Replace <target> with your desired target, like graphical.target or multi-user.target.
+* **Runlevel / Target**
 
-Summary
+  * The system enters a specific **target** (or legacy **runlevel**), defining the machine's operational mode (e.g., GUI, CLI, maintenance).
 
-The Linux booting process involves several stages, from BIOS/UEFI initialization to entering a specific target. Different targets define the operational state of the system, and you can view or change the default target using systemd commands. Understanding these concepts helps in managing and troubleshooting Linux systems effectively.
+---
+
+### 🎯 Different Targets in `systemd` (Modern Linux Systems)
+
+* `graphical.target`:
+  → Boots with a **Graphical User Interface (GUI)**
+
+* `multi-user.target`:
+  → Multi-user mode **without GUI** (text console)
+
+* `rescue.target`:
+  → **Single-user mode** for recovery and maintenance
+
+* `emergency.target`:
+  → Minimal environment for **critical recovery**
+
+---
+
+### 🔍 View or Change Default Target
+
+* **Check default target:**
+
+  ```bash
+  systemctl get-default
+  ```
+
+* **Set a new default target:**
+
+  ```bash
+  sudo systemctl set-default <target>
+  ```
+
+  Replace `<target>` with options like:
+
+  * `graphical.target`
+  * `multi-user.target`
+
+---
+
+### ✅ Summary
+
+* The Linux boot process includes **BIOS/UEFI**, **boot loader**, **kernel**, **init system**, and finally entering a **target**.
+* Targets define the system’s **operational state**.
+* You can use `systemctl` to **view** or **change** the default target.
+* Mastery of the boot process is essential for effective Linux **administration and troubleshooting**.
+
