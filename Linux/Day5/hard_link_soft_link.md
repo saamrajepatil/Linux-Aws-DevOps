@@ -46,5 +46,10 @@ Differences Between Hard Links and Soft Links:
 | **Use Case**            | Shortcuts, aliases, and referencing across systems | Creating resilient file aliases in same partition      |
 
 
+# Soft link
+ln -s /path/to/original mysoftlink
+
+# Hard link
+ln /path/to/original myhardlink
 
 Hard links are useful when you need multiple names for the same file within the same filesystem without consuming extra space. Soft links are more flexible, allowing references to directories and crossing filesystem boundaries, but they become invalid if the target file is removed. Understanding these differences helps in managing files efficiently in Linux environments.
