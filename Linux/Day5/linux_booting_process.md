@@ -1,6 +1,9 @@
 The booting process in Linux involves several stages, starting from the system's power-on to the loading of the operating system. Understanding this process is crucial for troubleshooting and system management.
 
-Linux Booting Process
+Linux Booting Process:
+
+![image](https://github.com/user-attachments/assets/2cf203ff-fd8a-440e-8f1e-d05144c679c3)
+
 
 BIOS/UEFI Initialization: When the system is powered on, the Basic Input/Output System (BIOS) or Unified Extensible Firmware Interface (UEFI) initializes hardware components and performs a Power-On Self Test (POST).
 
