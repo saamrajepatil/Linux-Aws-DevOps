@@ -1,0 +1,125 @@
+
+## 🔹 1. **Compression in Linux**
+
+Compression reduces the size of files or directories using specific algorithms.
+
+### ✴️ Common Compression Utilities:
+
+| Tool     | Extension | Command Example      | Notes                        |
+| -------- | --------- | -------------------- | ---------------------------- |
+| `gzip`   | `.gz`     | `gzip file.txt`      | Replaces original file       |
+| `gunzip` | (for .gz) | `gunzip file.txt.gz` | Decompress `.gz`             |
+| `bzip2`  | `.bz2`    | `bzip2 file.txt`     | Better compression than gzip |
+| `xz`     | `.xz`     | `xz file.txt`        | Very high compression        |
+
+### 🧪 Examples:
+
+* **Compress a file:**
+
+  ```bash
+  gzip report.log
+  ```
+* **Decompress a `.gz` file:**
+
+  ```bash
+  gunzip report.log.gz
+  ```
+* **Keep original file (with gzip):**
+
+  ```bash
+  gzip -c file.txt > file.txt.gz
+  ```
+
+---
+
+## 🔹 2. **Archiving in Linux**
+
+Archiving groups multiple files into a single file (no compression by default).
+
+### ✴️ Tool: `tar` (Tape Archive)
+
+| Task                             | Command                            |
+| -------------------------------- | ---------------------------------- |
+| Create archive                   | `tar -cvf archive.tar folder/`     |
+| Create compressed archive (gzip) | `tar -czvf archive.tar.gz folder/` |
+| Extract archive                  | `tar -xvf archive.tar`             |
+| Extract `.tar.gz`                | `tar -xzvf archive.tar.gz`         |
+| List content                     | `tar -tvf archive.tar.gz`          |
+
+### 🧪 Examples:
+
+* **Create compressed archive:**
+
+  ```bash
+  tar -czvf logs.tar.gz /var/log
+  ```
+* **Extract archive:**
+
+  ```bash
+  tar -xzvf logs.tar.gz
+  ```
+
+---
+
+## 🔹 3. **Unarchive/Decompress**
+
+* **Unarchive `.tar` file:**
+
+  ```bash
+  tar -xvf archive.tar
+  ```
+* **Unarchive `.tar.gz` file:**
+
+  ```bash
+  tar -xzvf archive.tar.gz
+  ```
+
+> ✅ Tip: `z` option means gzip compression, `x` for extract, `c` for create, `v` for verbose, `f` for file name.
+
+---
+
+## 🔹 4. **Find Command in Linux**
+
+The `find` command searches for files and directories based on conditions like name, size, modified time, etc.
+
+### 🛠️ Syntax:
+
+```bash
+find [path] [expression] [action]
+```
+
+### ✴️ Common Options & Examples:
+
+| Use Case                            | Command                                              |
+| ----------------------------------- | ---------------------------------------------------- |
+| Find by name                        | `find /home -name "file.txt"`                        |
+| Case-insensitive                    | `find /home -iname "file.txt"`                       |
+| Find by extension                   | `find . -name "*.log"`                               |
+| Find by size >100MB                 | `find /var -size +100M`                              |
+| Find by modified time (last 2 days) | `find . -mtime -2`                                   |
+| Find empty files                    | `find . -type f -empty`                              |
+| Delete files older than 30 days     | `find /var/log -type f -mtime +30 -exec rm -f {} \;` |
+| Find and list directories           | `find . -type d`                                     |
+
+### 🧪 Examples:
+
+1. **Delete `.log` files older than 7 days:**
+
+   ```bash
+   find /var/log -name "*.log" -mtime +7 -exec rm {} \;
+   ```
+2. **Archive old reports:**
+
+   ```bash
+   find /home/user/reports -name "*.csv" -mtime +10 -exec tar -rvf old_reports.tar {} \;
+   ```
+
+---
+
+## 🧩 Real-Time Use Cases
+
+* Clean up logs older than 30 days using `find` and `rm`.
+* Archive `/var/log` directory once per week using `tar` and `cron`.
+* Share project files as a `.tar.gz` to reduce upload/download time.
+* Create daily backup of a directory using `tar` + `gzip`.
+
