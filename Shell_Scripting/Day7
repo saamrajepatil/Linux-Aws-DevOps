@@ -57,20 +57,175 @@ echo "Hello, $name"
  
 echo $?
  
+______
  
+ 
+🔍 1. Use -x Option (Trace Execution)
+ 
+🔹 Run Script with -x:
+ 
+bash -x script.sh
+ 
+This prints each command before executing it.
+ 
+🔹 Example:
+ 
+#!/bin/bash
+a=5
+b=10
+c=$((a + b))
+echo "Sum is: $c"
+ 
+Run:
+ 
+bash -x script.sh
+ 
+Output:
+ 
++ a=5
++ b=10
++ c=15
++ echo 'Sum is: 15'
+Sum is: 15
  
  
 ---
  
-💡 Hands-on Practice (Real-World Examples)
+🛠 2. Add set -x or set -v in Script
  
-Script to take user name and print greeting
+set -x – Prints each command with its expanded arguments (good for debugging)
  
-Script to check if a file exists
- 
- 
+set -v – Prints each line of the script before execution (good for seeing flow)
  
  
+🔹 Example:
+ 
+#!/bin/bash
+set -x  # Enable debugging
+ 
+name="Sam"
+echo "Hello, $name"
+ 
+set +x  # Disable debugging
+ 
+ 
+---
+ 
+🧵 3. Use echo and printf Statements
+ 
+Add print statements to verify values and flow.
+ 
+🔹 Example:
+ 
+#!/bin/bash
+filename="file.txt"
+ 
+if [ -f "$filename" ]; then
+  echo "$filename exists."
+else
+  echo "$filename not found!"
+fi
+ 
+ 
+---
+ 
+⚠️ 4. Check Exit Status Using $?
+ 
+Returns the status of the last executed command.
+ 
+🔹 Example:
+ 
+#!/bin/bash
+cp file.txt /tmp/
+if [ $? -eq 0 ]; then
+  echo "Copy successful"
+else
+  echo "Copy failed"
+fi
+ 
+ 
+---
+ 
+🚫 5. Use trap to Catch Errors or Interrupts
+ 
+🔹 Example:
+ 
+#!/bin/bash
+trap 'echo "Something went wrong! Line: $LINENO"' ERR
+ 
+cp file1.txt /tmp/
+ 
+ 
+---
+ 
+🧰 6. Use shellcheck for Static Analysis
+ 
+Install on Amazon Linux:
+ 
+ 
+sudo yum install -y epel-release
+sudo yum install -y ShellCheck
+ 
+Run:
+ 
+ 
+shellcheck script.sh
+ 
+ 
+---
+ 
+✅ Summary of Debugging Options
+ 
+Command/Tool Purpose
+ 
+bash -x Trace script execution
+set -x / set +x Enable/disable debug mode inside script
+echo, printf Print variable values
+$? Check last command status
+trap Catch and handle errors
+shellcheck Linting and static analysis
+
+_______________________________________________________________________________________________________________________________________________________________________________
+
+Script to Take User Name and Print Greeting
+This script prompts the user to enter their name and then prints a personalized greeting.
+
+#!/bin/bash
+
+# Prompt the user to enter their name
+echo "Please enter your name:"
+
+# Read the user's input into the variable 'name'
+read name
+
+# Print a greeting message using the user's name
+echo "Hello, $name! Welcome!"
+
+##Script to Check if a File Exists
+This script checks whether a specified file exists in the current directory and provides feedback accordingly.
+
+#!/bin/bash
+
+# Prompt the user to enter the file name
+echo "Please enter the file name to check:"
+
+# Read the user's input into the variable 'filename'
+read filename
+
+# Check if the file exists
+if [ -e "$filename" ]; then
+    # If the file exists, print a confirmation message
+    echo "The file '$filename' exists."
+else
+    # If the file does not exist, print an error message
+    echo "The file '$filename' does not exist."
+fi
+
+Explanation
+User Input: Both scripts use read to capture user input.
+Conditional Logic: The second script uses an if statement with the -e flag to check for file existence.
+Output: Each script provides clear output based on user interaction.
+These scripts can be executed in a Unix-like environment by saving them with a .sh extension and running them using the command bash scriptname.sh. Make sure to give execute permissions using chmod +x scriptname.sh before running.
  
  
 
