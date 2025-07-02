@@ -1,0 +1,76 @@
+
+🗓️ Day 1: Shell Scripting Basics
+
+ 
+1. What is Shell Scripting?
+ 
+A script written for the shell (Bash, Zsh, etc.) to automate tasks.
+ 
+Used to automate DevOps workflows (CI/CD, backups, deployments).
+ 
+ 
+ 
+2. Shebang (#!)
+ 
+#!/bin/bash
+ 
+Tells the OS to use Bash to interpret the script.
+ 
+ 
+ 
+3. How to Create and Run a Script
+ 
+Create:
+ 
+nano hello.sh
+ 
+Sample Script:
+ 
+#!/bin/bash
+echo "Hello, DevOps students!"
+ 
+Run:
+ 
+chmod +x hello.sh
+./hello.sh
+ 
+ 
+ 
+4. Variables
+ 
+name="Sam"
+echo "Welcome, $name"
+ 
+ 
+5. User Input
+ 
+read -p "Enter your name: " name
+echo "Hello, $name"
+ 
+ 
+6. Comments
+ 
+# This is a comment
+ 
+ 
+7. Exit Status
+ 
+echo $?
+ 
+ 
+ 
+ 
+---
+ 
+💡 Hands-on Practice (Real-World Examples)
+ 
+Script to take user name and print greeting
+ 
+Script to check if a file exists
+ 
+ 
+ 
+ 
+ 
+ 
+
