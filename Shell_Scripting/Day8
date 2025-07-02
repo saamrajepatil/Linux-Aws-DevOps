@@ -1,0 +1,176 @@
+ 
+🔹 1. Argument Passing in Shell Script
+ 
+➤ What is it?
+ 
+Allows dynamic input to your script during execution.
+ 
+➤ Example Script: greet.sh
+ 
+#!/bin/bash
+echo "Script Name: $0"
+echo "First Argument: $1"
+echo "Second Argument: $2"
+ 
+➤ Run it:
+ 
+chmod +x greet.sh
+./greet.sh DevOps Students
+ 
+ 
+---
+ 
+🔹 2. Environment Variables
+ 
+➤ Exporting Temporary Variable:
+ 
+export NAME="Sam"
+echo $NAME
+ 
+⚠️ This will disappear after logout.
+ 
+➤ Set Permanently for a User:
+ 
+Add to ~/.bashrc or ~/.bash_profile
+ 
+export APP_ENV="dev"
+ 
+Then run:
+ 
+source ~/.bashrc
+ 
+➤ Set System-wide (All users):
+ 
+Add to /etc/profile or /etc/environment:
+ 
+export PATH=$PATH:/opt/tools
+ 
+ 
+---
+ 
+🔹 3. grep – Pattern Search Tool
+ 
+➤ Syntax:
+ 
+grep "pattern" filename
+ 
+➤ Examples:
+ 
+# Search for "error" in logs
+grep "error" /var/log/syslog
+ 
+# Case-insensitive
+grep -i "Error" file.txt
+ 
+# Count matches
+grep -c "http" access.log
+ 
+✅ Use Case: Log file scanning, monitoring error patterns in CI/CD pipelines.
+ 
+ 
+---
+ 
+🔹 4. awk – Field Processor
+ 
+➤ Syntax:
+ 
+awk '{print $1}' filename
+ 
+➤ Examples:
+ 
+# Print 1st and 3rd column from /etc/passwd
+awk -F: '{print $1, $3}' /etc/passwd
+ 
+# Add all values in 2nd column
+awk '{sum += $2} END {print sum}' numbers.txt
+ 
+✅ Use Case: Log parsing, field extraction from CSV/space-separated files.
+ 
+ 
+---
+ 
+🔹 5. sed – Stream Editor (Search, Replace)
+ 
+➤ Syntax:
+ 
+sed 's/old/new/' file
+ 
+➤ Examples:
+ 
+# Replace first occurrence
+sed 's/dev/prod/' config.txt
+ 
+# Replace globally
+sed 's/dev/prod/g' config.txt
+ 
+# Replace and save to same file
+sed -i 's/dev/prod/g' config.txt
+ 
+✅ Use Case: Updating configuration files in CI pipelines.
+ 
+ 
+---
+ 
+🔹 6. jq – JSON Parser (Install it first)
+ 
+➤ Example JSON:
+ 
+{"name": "Sam", "role": "DevOps"}
+ 
+➤ Examples:
+ 
+cat file.json | jq '.name'
+ 
+✅ Use Case: Parse and filter API responses (e.g., AWS CLI, Kubernetes API).
+ 
+ 
+---
+ 
+🔹 7. sort – Sort Lines
+ 
+➤ Examples:
+ 
+# Alphabetical sort
+sort names.txt
+ 
+# Numeric sort (descending)
+sort -nr numbers.txt
+ 
+# Sort and remove duplicates
+sort file.txt | uniq
+ 
+✅ Use Case: Organizing data (e.g., list of IPs, log levels).
+ 
+ 
+---
+ 
+🔹 Summary Cheatsheet
+ 
+Tool Purpose Example
+ 
+grep Search pattern in file grep "fail" log.txt
+awk Extract field/data awk '{print $1}' file
+sed Replace text sed 's/foo/bar/'
+jq Parse JSON jq '.key' data.json
+sort Sort lines sort -n data.txt
+export Set env variable export DB_USER=root
+source Apply file changes source ~/.bashrc
+ 
+ 
+ 
+---
+ 
+✅ Suggested Practice/Assignment for Students
+ 
+1. Script to parse access.log and count number of requests from each IP.
+ 
+ 
+2. Script to find and replace all URLs in config file with sed.
+ 
+ 
+3. Script that accepts 2 arguments and prints which one is greater.
+ 
+ 
+4. Script that reads a JSON and extracts specific values using jq.
+ 
+ 
