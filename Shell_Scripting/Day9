@@ -1,0 +1,143 @@
+
+ 
+Conditions, Loops, and Functions
+ 
+
+ 
+1. Conditional Statements
+ 
+if-else:
+ 
+if [ $age -ge 18 ]; then
+  echo "Adult"
+else
+  echo "Minor"
+fi
+ 
+ 
+ 
+2. File Checks
+ 
+if [ -f myfile.txt ]; then
+  echo "File exists"
+fi
+ 
+ 
+3. Loops
+ 
+for loop:
+ 
+for i in 1 2 3; do
+  echo "Count $i"
+done
+ 
+while loop:
+ 
+i=1
+while [ $i -le 5 ]; do
+  echo "i=$i"
+  ((i++))
+done
+ 
+ 
+ 
+4. Functions
+ 
+greet() {
+  echo "Hello $1"
+}
+ 
+greet Sam
+ 
+ 
+5. Command Line Arguments
+ 
+echo "Script name: $0"
+echo "First arg: $1"
+ 
+ 
+ 
+ 
+---
+ 
+💡 Hands-on Practice
+ 
+Script to print numbers using loop
+ 
+Script to backup a file using function
+ 
+Script to accept arguments (ex: backup.sh file1.txt)
+ 
+ 
+ 
+---
+ 
+🗓️ Real-time DevOps Scripts + Tools
+ 
+✅ Topics to Cover:
+ 
+1. Useful Commands in Scripting
+ 
+grep, awk, sed, cut, sort, tr, wc, head, tail
+ 
+Sample:
+ 
+ps -ef | grep nginx
+ 
+ 
+ 
+2. Automation Scripts
+ 
+Log cleanup script:
+ 
+find /var/log -type f -name "*.log" -mtime +7 -exec rm -f {} \;
+ 
+Disk usage alert:
+ 
+disk=$(df -h / | awk 'NR==2 {print $5}' | sed 's/%//')
+if [ $disk -gt 80 ]; then
+  echo "Disk usage is high!"
+fi
+ 
+ 
+ 
+3. Scheduling with cron
+ 
+Add cron job:
+ 
+crontab -e
+ 
+Example:
+ 
+0 1 * * * /home/ec2-user/backup.sh
+ 
+ 
+ 
+4. Debugging Script
+ 
+bash -x myscript.sh
+ 
+ 
+ 
+ 
+---
+ 
+💡 Hands-on Practice
+ 
+Script to check memory and alert if < threshold
+ 
+Script to search and replace text in a file using sed
+ 
+Script to archive /var/log files weekly
+ 
+ 
+ 
+---
+ 
+🎓  Assignments for Students:
+ 
+Create a script to ping a list of servers and log failures.
+ 
+Create a script to automate Nginx installation.
+ 
+Write a loop to read a file line-by-line and process each line.
