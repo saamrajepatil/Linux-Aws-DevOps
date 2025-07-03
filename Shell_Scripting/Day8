@@ -105,6 +105,9 @@ sed 's/dev/prod/g' config.txt
  
 # Replace and save to same file
 sed -i 's/dev/prod/g' config.txt
+
+#Delete the empty lines and save
+sed -i "/^$/d" test.txt
  
 ✅ Use Case: Updating configuration files in CI pipelines.
  
