@@ -1,0 +1,115 @@
+
+
+## ✅ **1. Script to Monitor Disk Usage**
+
+```bash
+#!/bin/bash
+THRESHOLD=80
+
+df -h | grep '^/dev/' | while read line; do
+  usage=$(echo $line | awk '{print $5}' | sed 's/%//')
+  partition=$(echo $line | awk '{print $1}')
+  if [ "$usage" -gt "$THRESHOLD" ]; then
+    echo "WARNING: Disk usage on $partition is ${usage}%"
+  fi
+done
+```
+
+### 🔍 Explanation:
+
+* `#!/bin/bash` → Tells OS to use Bash shell.
+* `THRESHOLD=80` → Set disk usage alert level to 80%.
+* `df -h` → Lists disk space in human-readable format.
+* `grep '^/dev/'` → Filters lines for actual disk partitions (excluding tmpfs etc).
+* `while read line; do` → Iterates through each disk line.
+* `awk '{print $5}'` → Gets 5th field (disk usage %).
+* `sed 's/%//'` → Removes `%` sign for comparison.
+* `awk '{print $1}'` → Gets 1st field (partition name).
+* `if [ "$usage" -gt "$THRESHOLD" ]; then` → Check if usage > threshold.
+* `echo ...` → Print warning if usage is high.
+* `done` → End of loop.
+
+---
+
+## ✅ **2. Script to Check if a Process is Running (e.g., Nginx)**
+
+```bash
+#!/bin/bash
+if pgrep nginx > /dev/null; then
+  echo "Nginx is running"
+else
+  echo "Nginx is not running"
+fi
+```
+
+### 🔍 Explanation:
+
+* `pgrep nginx` → Looks for the `nginx` process.
+* `> /dev/null` → Hides command output (we only care about result).
+* `if ... then` → Executes based on whether nginx was found.
+* `echo ...` → Print appropriate status message.
+
+---
+
+## ✅ **3. Script to Backup a Directory**
+
+```bash
+#!/bin/bash
+BACKUP_DIR="/backup"
+mkdir -p $BACKUP_DIR
+tar -czf $BACKUP_DIR/etc_backup_$(date +%F).tar.gz /etc
+```
+
+### 🔍 Explanation:
+
+* `BACKUP_DIR="/backup"` → Directory where backups will be stored.
+* `mkdir -p $BACKUP_DIR` → Create directory if not exists.
+* `tar -czf ...` → Compress `/etc` into a `.tar.gz` file:
+
+  * `c` → create archive
+  * `z` → compress with gzip
+  * `f` → file name follows
+* `$(date +%F)` → Adds today's date (e.g., 2025-07-05).
+* Full path → `/backup/etc_backup_2025-07-05.tar.gz`
+
+---
+
+## ✅ **4. Script to Send CPU Usage Alert**
+
+```bash
+#!/bin/bash
+CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print $2 + $4}')
+THRESHOLD=80
+
+if (( $(echo "$CPU > $THRESHOLD" | bc -l) )); then
+  echo "High CPU Usage: $CPU%"
+fi
+```
+
+### 🔍 Explanation:
+
+* `top -bn1` → Run `top` in batch mode for 1 iteration.
+* `grep "Cpu(s)"` → Get CPU usage line.
+* `awk '{print $2 + $4}'` → User + System CPU percentage.
+* `bc -l` → Performs floating point math.
+* `if (( ... ))` → Numeric comparison.
+* `echo ...` → Alert message.
+
+---
+
+## ✅ **5. Script to Delete Files Older Than 30 Days**
+
+```bash
+#!/bin/bash
+find /var/log -type f -mtime +30 -exec rm -f {} \;
+echo "Old logs deleted"
+```
+
+### 🔍 Explanation:
+
+* `find /var/log` → Search inside `/var/log` directory.
+* `-type f` → Find only files.
+* `-mtime +30` → Modified more than 30 days ago.
+* `-exec rm -f {} \;` → Delete each old file.
+* `echo ...` → Confirmation message.
+
