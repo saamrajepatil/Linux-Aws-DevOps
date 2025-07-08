@@ -19,3 +19,54 @@ A: The principle of least privilege states that users should be granted only the
 Q: What is an AWS managed policy?
 
 A: An AWS managed policy is a predefined policy created and managed by AWS. These policies cover common use cases and provide predefined permissions for specific AWS services or actions. AWS managed policies are maintained and updated by AWS, ensuring they stay up to date with new AWS services and features. They can be attached to IAM users, groups, or roles in your AWS account.
+
+Q: IAM **roles** and **policies** difference ?
+
+### 🔐 **IAM Role** – *“Who you are and what you're allowed to do temporarily”*
+
+* **A role is an identity** with **temporary permissions**.
+* Roles are meant to be **assumed by users, services, or other AWS accounts**.
+* Example: An EC2 instance assumes a role to access S3.
+
+#### 📌 Think of a role as:
+
+> "A jacket you wear that comes with permission tags."
+
+---
+
+### 🧾 **IAM Policy** – *“What you’re allowed to do”*
+
+* A policy is a **document (in JSON)** that defines **permissions**.
+* It controls **what actions are allowed/denied**, on which **resources**.
+* Policies can be:
+
+  * Attached to **users**, **groups**, or **roles**
+  * Managed by AWS or custom-created
+
+#### 📌 Think of a policy as:
+
+> "The rulebook that says what you can and can't do."
+
+---
+
+### ✅ Example in Action:
+
+Let’s say you want a Lambda function to access DynamoDB.
+
+1. You create an **IAM Role** for Lambda.
+2. You attach a **policy** to that role with `dynamodb:*` permissions.
+3. The Lambda function **assumes the role** and gets the permissions from the **policy**.
+
+---
+
+### 🔄 Summary:
+
+| Feature     | **IAM Role**                        | **IAM Policy**                             |
+| ----------- | ----------------------------------- | ------------------------------------------ |
+| What it is  | Identity with temporary permissions | Permission rules (JSON documents)          |
+| Used for    | Delegation / temporary access       | Defining allowed actions and resources     |
+| Attached to | AWS services, users, other roles    | Roles, users, groups                       |
+| Contains    | No permissions by itself            | Actual permissions (Allow/Deny statements) |
+
+
+
