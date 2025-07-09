@@ -112,7 +112,131 @@ Additional capabilities
     e – Extra storage or memory
 
     z – High performance
-```
+
+---
+
+## ✅ **1. Instance Types (Based on Use Case / Size)**
+
+These are grouped by **family** — each family optimized for a specific use:
+
+### 🧮 **a. General Purpose**
+
+| Family            | Examples                      | Use Case               |
+| ----------------- | ----------------------------- | ---------------------- |
+| `t4g`, `t3`, `t2` | Burstable (low-cost dev/test) | Small apps, websites   |
+| `m7`, `m6`, `m5`  | Balanced compute/memory       | App servers, small DBs |
+
+---
+
+### ⚙️ **b. Compute Optimized**
+
+| Family           | Examples        | Use Case                      |
+| ---------------- | --------------- | ----------------------------- |
+| `c7`, `c6`, `c5` | High CPU\:ratio | Web servers, batch processing |
+
+---
+
+### 🧠 **c. Memory Optimized**
+
+| Family           | Examples                   | Use Case                          |
+| ---------------- | -------------------------- | --------------------------------- |
+| `r7`, `r6`, `r5` | Memory-intensive workloads | In-memory DBs, caching, analytics |
+| `x2`, `x1`       | Extra-large memory         | SAP HANA, real-time big data      |
+| `z1d`            | High CPU + memory          | EDA, high-end apps                |
+
+---
+
+### 💽 **d. Storage Optimized**
+
+| Family           | Examples             | Use Case                           |
+| ---------------- | -------------------- | ---------------------------------- |
+| `i3`, `i4`, `d3` | Fast local NVMe/SSD  | NoSQL DBs, Elasticsearch, big data |
+| `h1`             | High disk throughput | Data warehousing, log processing   |
+
+---
+
+### 🎮 **e. Accelerated Computing**
+
+| Family     | Examples                  | Use Case                           |
+| ---------- | ------------------------- | ---------------------------------- |
+| `p4`, `p3` | GPU (NVIDIA) for ML, AI   | Deep learning, HPC                 |
+| `g5`, `g4` | GPU for graphics, gaming  | Video rendering, streaming         |
+| `inf1`     | ML inference acceleration | TensorFlow inference, real-time AI |
+
+---
+
+## 💰 **2. Purchase Options (Based on Cost Plan)**
+
+AWS offers different **payment models**:
+
+---
+
+### 🟢 **a. On-Demand Instances**
+
+* **Pay per second/hour**
+* **No commitment**
+* Best for short-term, unpredictable workloads
+
+> 🧠 Example: Start a dev/test server and stop anytime
+
+---
+
+### 🟠 **b. Reserved Instances (RI)**
+
+* Commit to **1 or 3 years**
+* **Up to 75% cheaper** than on-demand
+* Can be **Standard** (locked) or **Convertible** (change type)
+
+> 💼 Example: A production web server you’ll use 24/7 for 1+ years
+
+---
+
+### 🔄 **c. Spot Instances**
+
+* Use **unused EC2 capacity**
+* **Up to 90% cheaper**, but can be terminated anytime
+* Best for **batch jobs**, CI/CD, rendering
+
+> 🧪 Example: Use spot instances to train ML models or run nightly builds
+
+---
+
+### 🟡 **d. Savings Plans**
+
+* Flexible alternative to RIs
+* Commit to **spend (\$/hr)** instead of locking to a specific instance
+* Apply across EC2, Lambda, Fargate
+
+> 💸 Example: You spend \$100/hour on compute — AWS gives up to 66% discount
+
+---
+
+### ⚡ **e. Dedicated Hosts / Instances**
+
+* Physical server dedicated to your workloads
+* Required for **BYOL (Bring Your Own License)** like Oracle, SQL Server
+
+---
+
+### 📦 **Summary Table**
+
+| Type              | Use Case                | Example Families |
+| ----------------- | ----------------------- | ---------------- |
+| General Purpose   | Balanced workloads      | t4g, m6          |
+| Compute Optimized | CPU-heavy tasks         | c6, c7           |
+| Memory Optimized  | In-memory DBs, big data | r6, x2           |
+| Storage Optimized | High IOPS / local disk  | i3, i4           |
+| GPU Instances     | ML, AI, video rendering | p4, g5           |
+
+| Pricing Plan       | Best For                             | Notes                                  |
+| ------------------ | ------------------------------------ | -------------------------------------- |
+| On-Demand          | Unpredictable use                    | Most flexible, no discount             |
+| Reserved Instances | Steady, long-term workloads          | 1–3 year commitment                    |
+| Spot Instances     | Non-critical, fault-tolerant tasks   | Cheapest, but may be interrupted       |
+| Savings Plans      | Long-term, flexible spend commitment | Applies across instance types/services |
+| Dedicated Hosts    | Licensing or compliance needs        | Full physical isolation                |
+
+---
 
 ## EC2 Instance Basics:
 
