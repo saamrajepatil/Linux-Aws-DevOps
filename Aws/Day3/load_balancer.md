@@ -1,5 +1,11 @@
 In AWS, there are **3 main types of Elastic Load Balancers (ELB)**, each suited for different use cases. Here’s a breakdown with features and real-world examples:
 
+
+![image](https://github.com/user-attachments/assets/a47f591e-7302-4791-b918-e3d9063cab3b)
+
+
+![image](https://github.com/user-attachments/assets/de340b24-1de2-4b3a-998c-32064840a194)
+
 ---
 
 ## ✅ **1. Application Load Balancer (ALB)** – *Layer 7 (HTTP/HTTPS)*
@@ -81,5 +87,11 @@ In AWS, there are **3 main types of Elastic Load Balancers (ELB)**, each suited 
 
 * **Purpose**: Load balance third-party virtual appliances (e.g., firewalls, IDS/IPS)
 * **Use case**: Send all traffic through an inspection layer before reaching apps
+
+---
+
+
+
+![image](https://github.com/user-attachments/assets/546b3842-081b-4290-877f-191f29c67238)
 
 
