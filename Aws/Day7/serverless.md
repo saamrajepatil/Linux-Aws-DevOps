@@ -9,6 +9,8 @@ A traditional 3-tier app is made of:
 
 In **serverless**, these tiers are built using fully managed AWS services — no EC2, no manual scaling.
 
+<img width="1100" height="478" alt="image" src="https://github.com/user-attachments/assets/f3a128ce-96ce-413b-80dc-2ba3052bb5c3" />
+
 ---
 
 ### ✅ 3-Tier Serverless Architecture Components on AWS
