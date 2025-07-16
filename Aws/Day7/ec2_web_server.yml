@@ -1,0 +1,88 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template to Create an EC2 instance in a VPC
+Parameters:
+  ImageId:
+    Type: String
+    Description: webserver
+    Default: ami-05fa00d4c63e32376
+  VpcId:
+    Type: String
+    Description: VPC id
+    Default: vpc-0c6ab390f63a22759
+  PrivateIpAddress:
+    Type: String
+    Description: private IP
+  SubnetId:
+    Type: String
+    Description: Subnet in which to launch an EC2
+    Default: subnet-002cbd70648d0a7ab
+  AvailabilityZone:
+    Type: String
+    Description: Availability Zone into which instance will launch
+    Default: us-east-1a
+  InstanceType:
+    Type: String
+    Description: Choosing t2 medium 
+    Default: t2.micro
+  KeyName:
+    Description: SSH Keypair to login to the instance
+    Type: AWS::EC2::KeyPair::KeyName
+    Default: test
+  SecurityGroup:
+    Description: Security group need to attached to instance
+    Type: AWS::EC2::SecurityGroup::Id
+    Default: sg-0a2270d216bdca5ec
+Resources:
+  webserver:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref ImageId
+      InstanceType: !Ref InstanceType
+      AvailabilityZone: !Ref AvailabilityZone
+      KeyName: !Ref KeyName
+      PrivateIpAddress: !Ref PrivateIpAddress
+      SubnetId: !Ref SubnetId
+      SecurityGroupIds: 
+                   - !Ref SecurityGroup
+      #Tags:
+      #  - Key: Name
+      #   Value: cloudformation_nginx_windows                     
+                   
+      #NetworkInterfaces:
+       # - DeviceIndex: 0
+        #  AssociatePublicIpAddress: false
+        #  DeleteOnTermination: true
+        #  SubnetId: !Ref SubnetId
+        #  GroupSet:
+         #   - !Ref SecurityGroup
+      UserData: 
+        Fn::Base64: |
+          <script>
+          sudo su 
+          yum install httpd
+          systemctl start httpd.service
+          systemctl enable httpd.service
+          echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+          </script>
+          <persist>true</persist>
+    Metadata:
+      AWS::CloudFormation::Designer:
+        id: e020b418-a02b-4b62-996e-07117d0c30c7
+ 
+
+Outputs:
+  webserverId:
+    Description: Instance Id
+    Value: webserver
+Metadata:
+  AWS::CloudFormation::Designer:
+    e020b418-a02b-4b62-996e-07117d0c30c7:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        y: 90
+      z: 1
+      embeds: []
