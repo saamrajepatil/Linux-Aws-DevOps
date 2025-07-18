@@ -57,6 +57,8 @@ INSERT INTO employees VALUES (10, 'Jack', 'Marketing', 48000);
 **Target DB**: MySQL (running on RDS or EC2)
 
 Add inbound rule in 2 security groups sourcedb sg and target db sg with default vpc cidr for port 3306
+
+
 <img width="1261" height="226" alt="image" src="https://github.com/user-attachments/assets/b874d6c0-80d0-4ecc-884f-d88d80305049" />
 
 
@@ -142,8 +144,8 @@ Add inbound rule in 2 security groups sourcedb sg and target db sg with default 
      * Use wizard  and Add new selection rule.
      * Example: Migrate all tables in `companydb` DB:
 
-       ```
-       <img width="947" height="686" alt="image" src="https://github.com/user-attachments/assets/a7ad8475-0ba9-4d02-9867-0aa443ae7382" />
+
+<img width="947" height="686" alt="image" src="https://github.com/user-attachments/assets/a7ad8475-0ba9-4d02-9867-0aa443ae7382" />
 
 Transformation rule.
 
@@ -152,7 +154,7 @@ Transformation rule.
 Then
 
 disable pre migration assesment
-       ```
+
 5. Click **Create task and start**.
 
 ---
@@ -163,9 +165,7 @@ disable pre migration assesment
 * Monitor logs and progress.
 * On success, go to target DB and verify records.
 
-<img width="1591" height="351" alt="image" src="https://github.com/user-attachments/assets/cc2d5f0b-152a-488e-a26c-3a15609cc667" />
-
----
+<img width="1591" height="351" alt="image" src="https://github.com/user-attachments/assets/031eb5b1-0670-44a0-97bf-5bc4ca7f07b4" />
 
 
 ---
