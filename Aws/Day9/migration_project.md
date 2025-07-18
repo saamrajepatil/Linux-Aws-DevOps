@@ -143,6 +143,10 @@ Add inbound rule in 2 security groups sourcedb sg and target db sg with default 
      * Use wizard  and Add new selection rule.
      * Example: Migrate all tables in `companydb` DB:
 
+Selection rules
+where schema name is like 'companydb' and Source table name is like '%', include
+Transformation rules - 
+where schema name is like 'companydb' and Source table name is like '', convert-lowercase
 
 <img width="947" height="686" alt="image" src="https://github.com/user-attachments/assets/a7ad8475-0ba9-4d02-9867-0aa443ae7382" />
 
