@@ -12,9 +12,8 @@
 2. Connect using SSH
 3. Install MySQL client:
 
-   ```bash
 sudo dnf install mariadb105
-   ```
+
 4. Connect to RDS:
 
    ```bash
