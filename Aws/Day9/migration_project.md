@@ -5,6 +5,55 @@
 ## ✅ Scenario
 
 **Source DB**: MySQL (running on EC2 or RDS)
+
+## ✅ Sample Table and Data
+
+1. Launch a new EC2 instance (Amazon Linux 2)
+2. Connect using SSH
+3. Install MySQL client:
+
+   ```bash
+sudo dnf install mariadb105
+   ```
+4. Connect to RDS:
+
+   ```bash
+   mysql -h < source RDS-endpoint> -u admin -p
+   ```
+
+
+```sql
+-- Create DB
+CREATE DATABASE companydb;
+
+-- Use DB
+USE companydb;
+
+-- Create Table
+CREATE TABLE employees (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  department VARCHAR(50),
+  salary INT
+);
+
+-- Insert 10 Records
+INSERT INTO employees VALUES (1, 'Alice', 'IT', 60000);
+INSERT INTO employees VALUES (2, 'Bob', 'Finance', 55000);
+INSERT INTO employees VALUES (3, 'Charlie', 'HR', 52000);
+INSERT INTO employees VALUES (4, 'David', 'IT', 61000);
+INSERT INTO employees VALUES (5, 'Eva', 'Sales', 50000);
+INSERT INTO employees VALUES (6, 'Frank', 'Finance', 54000);
+INSERT INTO employees VALUES (7, 'Grace', 'HR', 53000);
+INSERT INTO employees VALUES (8, 'Helen', 'Sales', 51000);
+INSERT INTO employees VALUES (9, 'Ian', 'IT', 62000);
+INSERT INTO employees VALUES (10, 'Jack', 'Marketing', 48000);
+```
+
+---
+
+```
+
 **Target DB**: MySQL (running on RDS or EC2)
 
 Add inbound rule in 2 security groups sourcedb sg and target db sg with default vpc cidr for port 3306
@@ -84,32 +133,27 @@ Add inbound rule in 2 security groups sourcedb sg and target db sg with default 
    * **Migration type**:
 
      * `Migrate existing data` (for one-time)
-     * `Migrate existing data and replicate ongoing changes` (for CDC)
+
 3. **Task settings**:
+ Leave as Default
 
-   * Enable logging.
-   * Table mappings:
+4. Table mappings:
 
-     * Use wizard or JSON to specify tables.
-     * Example: Migrate all tables in `demo` DB:
+     * Use wizard  and Add new selection rule.
+     * Example: Migrate all tables in `companydb` DB:
 
-       ```json
-       {
-         "rules": [
-           {
-             "rule-type": "selection",
-             "rule-id": "1",
-             "rule-name": "1",
-             "object-locator": {
-               "schema-name": "demo",
-               "table-name": "%"
-             },
-             "rule-action": "include"
-           }
-         ]
-       }
        ```
-4. Click **Create task and start**.
+       <img width="947" height="686" alt="image" src="https://github.com/user-attachments/assets/a7ad8475-0ba9-4d02-9867-0aa443ae7382" />
+
+Transformation rule.
+
+<img width="981" height="665" alt="image" src="https://github.com/user-attachments/assets/4289ea9b-9ba4-409c-87db-3795c5aadc36" />
+
+Then
+
+disable pre migration assesment
+       ```
+5. Click **Create task and start**.
 
 ---
 
@@ -119,51 +163,10 @@ Add inbound rule in 2 security groups sourcedb sg and target db sg with default 
 * Monitor logs and progress.
 * On success, go to target DB and verify records.
 
----
-
-## ✅ Additional Setup (Important)
-
-### ✅ MySQL Source Permissions (Replication User):
-
-Run in source MySQL:
-
-```sql
-CREATE USER 'dms_user'@'%' IDENTIFIED BY 'your_password';
-
-GRANT SELECT, RELOAD, SUPER, REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO 'dms_user'@'%';
-FLUSH PRIVILEGES;
-```
+<img width="1591" height="351" alt="image" src="https://github.com/user-attachments/assets/cc2d5f0b-152a-488e-a26c-3a15609cc667" />
 
 ---
 
-## ✅ Sample Table and Data
-
-### Create sample table in source:
-
-```sql
-CREATE DATABASE demo;
-
-USE demo;
-
-CREATE TABLE students (
-  id INT PRIMARY KEY,
-  name VARCHAR(50),
-  age INT,
-  grade VARCHAR(5)
-);
-
-INSERT INTO students (id, name, age, grade) VALUES
-(1, 'Alice', 20, 'A'),
-(2, 'Bob', 21, 'B'),
-(3, 'Charlie', 22, 'A'),
-(4, 'David', 20, 'C'),
-(5, 'Eva', 23, 'B'),
-(6, 'Frank', 21, 'A'),
-(7, 'Grace', 22, 'B'),
-(8, 'Helen', 20, 'C'),
-(9, 'Ian', 21, 'B'),
-(10, 'Jane', 23, 'A');
-```
 
 ---
 
