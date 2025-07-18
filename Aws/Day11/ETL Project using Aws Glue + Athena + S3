@@ -9,6 +9,28 @@
 * Query that table using **Athena SQL**.
 * Automatically trigger the crawler using **S3 Event Notification** (optional: via Lambda).
 
+eg add existing lambda role with below new inline plociy 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "glue:StartJobRun",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:*",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+
 ---
 
 ## 🔧 Prerequisites
@@ -107,9 +129,13 @@ SELECT title, country FROM netflix_titles WHERE country = 'India';
 import boto3
 
 def lambda_handler(event, context):
-    client = boto3.client('glue')
-    response = client.start_crawler(Name='netflix-crawler')
-    return {'statusCode': 200, 'body': 'Crawler triggered'}
+    glue = boto3.client('glue')
+    response = glue.start_job_run(JobName='GlueNetflixcrawler')
+    return {
+        'statusCode': 200,
+        'body': f'Glue job started: {response["JobRunId"]}'
+    }
+
 ```
 
 ---
