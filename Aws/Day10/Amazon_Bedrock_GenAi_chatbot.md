@@ -1,9 +1,55 @@
 
+![Bedrock_genai](https://github.com/user-attachments/assets/e834d74a-cb2b-4f43-9a51-9090c0f16a02)
+
+
+### 🔹 **Artificial Intelligence (AI)**
+
+AI is the broadest concept that refers to machines or systems that mimic human intelligence. It includes reasoning, learning, problem-solving, and decision-making.
+**Relation**: It is the umbrella term under which all the other technologies fall.
+
+---
+
+### 🔹 **Machine Learning (ML)**
+
+ML is a subset of AI that allows systems to learn from data and improve over time without being explicitly programmed. It includes supervised, unsupervised, and reinforcement learning.
+**Relation**: ML powers most intelligent behaviors in AI systems, including Generative AI and OCR.
+
+---
+
+### 🔹 **Generative AI**
+
+Generative AI is a type of ML that creates new content like text, images, code, or audio. It learns patterns from training data and generates human-like outputs (e.g., ChatGPT, DALL·E).
+**Relation**: A modern ML application focused on *creation* rather than prediction or classification.
+
+---
+
+### 🔹 **Optical Character Recognition (OCR)**
+
+OCR is a computer vision technique (often AI/ML-powered) that extracts text from images or scanned documents.
+**Relation**: Uses ML models (like CNNs) to recognize characters, enabling text-based AI or RAG systems.
+
+---
+
+### 🔹 **Agentic AI**
+
+Agentic AI refers to AI systems that act autonomously to achieve goals — capable of planning, making decisions, and interacting with tools or environments (e.g., AI agents using tools like web search or APIs).
+**Relation**: Often built using Generative AI + reasoning logic, making them smarter and more proactive.
+
+---
+
+### 🧠 How They Relate:
+
+```
+AI
+├── ML
+│   ├── Generative AI (content creation)
+│   ├── OCR (text recognition)
+│
+└── Agentic AI (uses ML + planning + tools to act like autonomous assistants)
+```
+
 ## 🤖 DevOps Chatbot Using AWS Bedrock + OpenSearch + S3 (No Code, No API)
 
-
-
-![Bedrock_genai](https://github.com/user-attachments/assets/e834d74a-cb2b-4f43-9a51-9090c0f16a02)
 
 ### 🔐 1. Create a Non-Root IAM User
 
