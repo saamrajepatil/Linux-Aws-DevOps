@@ -8,7 +8,8 @@
 **Target DB**: MySQL (running on RDS or EC2)
 
 Add inbound rule in 2 security groups sourcedb sg and target db sg with default vpc cidr for port 3306
-![Uploading image.png…]()
+<img width="1261" height="226" alt="image" src="https://github.com/user-attachments/assets/b874d6c0-80d0-4ecc-884f-d88d80305049" />
+
 
 ---
 
