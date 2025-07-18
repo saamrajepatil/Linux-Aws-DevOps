@@ -1,0 +1,161 @@
+**real-world AWS project** using **AWS Glue + Athena + S3**, where we process a Netflix CSV file stored in S3, create a Glue Data Catalog, and query it using Athena. We’ll also integrate an **S3 event notification** to trigger a Lambda (optional for advanced automation).
+
+---
+
+## ✅ Project Goal
+
+* Upload Netflix CSV file to S3.
+* Use **AWS Glue Crawler** to create a **Glue Data Catalog Table**.
+* Query that table using **Athena SQL**.
+* Automatically trigger the crawler using **S3 Event Notification** (optional: via Lambda).
+
+---
+
+## 🔧 Prerequisites
+
+* AWS IAM user with access to:
+
+  * S3
+  * Glue
+  * Athena
+  * Lambda (optional for event trigger)
+* Netflix CSV data file (e.g., `netflix_titles.csv`)
+* AWS Region (e.g., `us-east-1`)
+
+---
+
+## 🚀 Step-by-Step Implementation
+
+### **Step 1: Upload CSV to S3**
+
+1. Go to **S3** → Create a bucket: `netflix-data-bucket`
+2. Upload your file: `netflix_titles.csv`
+
+---
+
+### **Step 2: Create an AWS Glue Database**
+
+1. Go to **AWS Glue Console**
+2. Click on **"Databases" > Add database**
+
+   * Name: `netflix_db`
+
+---
+
+### **Step 3: Create an IAM Role for Glue**
+
+1. Go to **IAM > Roles > Create role**
+2. Select: **Glue**
+3. Add permissions:
+
+   * `AmazonS3ReadOnlyAccess`
+   * `AWSGlueServiceRole`
+4. Name it: `GlueNetflixRole`
+
+---
+
+### **Step 4: Create a Glue Crawler**
+
+1. Go to **AWS Glue > Crawlers > Add Crawler**
+2. Name: `netflix-crawler`
+3. Source type: Data stores
+
+   * Choose: S3
+   * Include path: `s3://netflix-data-bucket/`
+4. IAM Role: `GlueNetflixRole`
+5. Output database: `netflix_db`
+6. Run frequency: **On demand** (for now)
+7. Finish and **Run the crawler**
+
+🔎 **What happens now**: Glue reads the CSV file and creates a table in `netflix_db` called something like `netflix_titles`.
+
+---
+
+### **Step 5: Use Athena to Query the Data**
+
+1. Go to **Athena Console**
+2. Choose the database: `netflix_db`
+3. Run sample SQL queries:
+
+```sql
+-- Show table
+SHOW TABLES;
+
+-- Preview data
+SELECT * FROM netflix_titles LIMIT 10;
+
+-- Filter by Country
+SELECT title, country FROM netflix_titles WHERE country = 'India';
+```
+
+⚠️ **Note**: If Athena complains about file format or missing SerDe, you can specify it in the crawler or reconfigure the table.
+
+---
+
+### ✅ OPTIONAL: Step 6: Add S3 Event to Trigger the Glue Crawler
+
+(For automation: When new files are added to S3)
+
+#### Step 6.1: Create a Lambda Function
+
+1. Go to **Lambda > Create function**
+2. Name: `trigger_glue_crawler`
+3. Runtime: Python 3.12
+4. IAM Role: Add permissions to `StartCrawler` and S3
+
+```python
+import boto3
+
+def lambda_handler(event, context):
+    client = boto3.client('glue')
+    response = client.start_crawler(Name='netflix-crawler')
+    return {'statusCode': 200, 'body': 'Crawler triggered'}
+```
+
+---
+
+#### Step 6.2: Add S3 Event Notification
+
+1. Go to **S3 bucket > Properties > Event notifications**
+2. Add event notification:
+
+   * Event name: `on-upload-glue`
+   * Event type: `PUT`
+   * Prefix: `netflix_titles.csv`
+   * Destination: Lambda function (`trigger_glue_crawler`)
+
+---
+
+### ✅ Outcome
+
+* CSV is uploaded → Glue crawler triggered → Table updated → Athena can instantly query.
+* Fully serverless: No EC2 or manual data processing.
+* You can schedule daily crawling or add more files.
+
+---
+
+## 📌 Tools Used
+
+| Tool   | Purpose                           |
+| ------ | --------------------------------- |
+| S3     | Storage for Netflix CSV data      |
+| Glue   | Data catalog and schema discovery |
+| Athena | SQL querying of data in S3        |
+| Lambda | Optional trigger from S3 to Glue  |
+
+---
+
+## 📁 Folder Example (S3)
+
+```
+s3://netflix-data-bucket/
+└── netflix_titles.csv
+```
+
+---
+
+## 🔍 Real-world Use Cases
+
+* Data lakes (S3 + Glue + Athena)
+* Daily ingestion of new datasets
+* Serverless analytics pipelines
