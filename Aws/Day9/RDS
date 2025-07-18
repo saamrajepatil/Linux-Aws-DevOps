@@ -1,0 +1,195 @@
+
+
+## ✅ Part 1: AWS RDS and SQL
+
+### 🔹 What is RDS?
+
+* Amazon RDS (Relational Database Service) is a **managed database service** that supports engines like MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.
+* AWS handles: provisioning, patching, backups, and monitoring.
+
+### 🔹 Use Case in DevOps:
+
+* Deploy a DB for an application without worrying about infra.
+* Integrate with EC2, Lambda, or ECS workloads.
+
+---
+
+## ✅ Step-by-Step: Create MySQL RDS in AWS Free Tier
+
+1. **Go to RDS Console → Databases → Create database**
+2. **Engine:** MySQL
+3. **Templates:** Free Tier
+4. **DB Instance identifier:** `mydb`
+5. **Master username:** `admin`
+6. **Master password:** Set a strong one
+7. **DB instance size:** db.t3.micro (Free Tier)
+8. **Storage:** 20 GB (default)
+9. **Connectivity:**
+
+   * Public access: Yes
+   * VPC security group: Create or select one that allows port 3306
+10. Click **Create database**
+
+---
+
+### 🔹 Connect to RDS from EC2
+
+1. Launch a small EC2 instance (Amazon Linux 2)
+2. SSH into EC2
+3. Install MySQL client:
+
+   ```bash
+  sudo dnf install mariadb105
+   ```
+4. Connect to RDS:
+
+   ```bash
+   mysql -h <RDS-endpoint> -u admin -p
+   ```
+
+---
+
+## ✅ SQL Basics – 10 Essential Commands with Examples
+
+```sql
+-- 1. Create a database
+CREATE DATABASE studentdb;
+
+-- 2. Use a database
+USE studentdb;
+
+-- 3. Create a table
+CREATE TABLE students (
+  id INT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT
+);
+
+-- 4. Insert records
+INSERT INTO students VALUES (1, 'John', 20), (2, 'Sara', 22);
+
+-- 5. Select all
+SELECT * FROM students;
+
+-- 6. Select with condition
+SELECT * FROM students WHERE age > 20;
+
+-- 7. Update record
+UPDATE students SET age = 23 WHERE id = 2;
+
+-- 8. Delete record
+DELETE FROM students WHERE id = 1;
+
+-- 9. Add a new column
+ALTER TABLE students ADD email VARCHAR(100);
+
+-- 10. Drop table
+DROP TABLE students;
+```
+
+_________
+
+## ✅ Demo Summary
+
+
+1. ✅ Creating RDS MySQL DB
+2. ✅ Connecting from EC2
+3. ✅ Creating a new table
+4. ✅ Inserting 10 records
+5. ✅ Verifying data with basic SQL commands
+
+
+---
+
+## 🌐 Part 1: Create MySQL DB in Amazon RDS (Free Tier)
+
+### Step-by-step:
+
+1. Go to **RDS** console → **Create Database**
+2. Select:
+
+   * Engine: `MySQL`
+   * Version: `8.x` (default)
+   * Template: `Free tier`
+3. DB Settings:
+
+   * DB instance identifier: `mydb`
+   * Master username: `admin`
+   * Master password: `YourPassword123!`
+4. Connectivity:
+
+   * VPC: Default
+   * Public access: Yes ✅
+   * Security Group: Create a new one or allow access from your EC2 IP
+5. Click **Create database**
+
+Wait until the **status is "Available"**.
+
+---
+
+## 💻 Part 2: Connect to RDS from EC2
+
+1. Launch a new EC2 instance (Amazon Linux 2)
+2. Connect using SSH
+3. Install MySQL client:
+
+   ```bash
+   sudo yum install mysql -y
+   ```
+4. Connect to RDS:
+
+   ```bash
+   mysql -h <RDS-endpoint> -u admin -p
+   ```
+
+---
+
+## 📂 Part 3: Create a New Database and Table
+
+### SQL commands (explain each to students):
+
+```sql
+-- Create DB
+CREATE DATABASE companydb;
+
+-- Use DB
+USE companydb;
+
+-- Create Table
+CREATE TABLE employees (
+  id INT PRIMARY KEY,
+  name VARCHAR(50),
+  department VARCHAR(50),
+  salary INT
+);
+
+-- Insert 10 Records
+INSERT INTO employees VALUES (1, 'Alice', 'IT', 60000);
+INSERT INTO employees VALUES (2, 'Bob', 'Finance', 55000);
+INSERT INTO employees VALUES (3, 'Charlie', 'HR', 52000);
+INSERT INTO employees VALUES (4, 'David', 'IT', 61000);
+INSERT INTO employees VALUES (5, 'Eva', 'Sales', 50000);
+INSERT INTO employees VALUES (6, 'Frank', 'Finance', 54000);
+INSERT INTO employees VALUES (7, 'Grace', 'HR', 53000);
+INSERT INTO employees VALUES (8, 'Helen', 'Sales', 51000);
+INSERT INTO employees VALUES (9, 'Ian', 'IT', 62000);
+INSERT INTO employees VALUES (10, 'Jack', 'Marketing', 48000);
+```
+
+---
+
+## 🔍 Part 4: 10 Basic SQL Commands with Output Examples
+
+| SQL Command                                         | Example | Description                |
+| --------------------------------------------------- | ------- | -------------------------- |
+| `SHOW DATABASES;`                                   | —       | Lists all databases        |
+| `USE companydb;`                                    | —       | Switch to companydb        |
+| `SHOW TABLES;`                                      | —       | Shows tables in current DB |
+| `DESCRIBE employees;`                               | —       | Shows table schema         |
+| `SELECT * FROM employees;`                          | —       | Show all rows              |
+| `SELECT name FROM employees WHERE department='IT';` | —       | Filter by condition        |
+| `UPDATE employees SET salary=58000 WHERE id=5;`     | —       | Update a row               |
+| `DELETE FROM employees WHERE id=10;`                | —       | Delete a row               |
+| `ALTER TABLE employees ADD email VARCHAR(100);`     | —       | Add new column             |
+| `DROP TABLE employees;`                             | —       | Delete table               |
+
