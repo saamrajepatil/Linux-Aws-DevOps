@@ -7,6 +7,9 @@
 **Source DB**: MySQL (running on EC2 or RDS)
 **Target DB**: MySQL (running on RDS or EC2)
 
+Add inbound rule in 2 security groups sourcedb sg and target db sg with default vpc cidr for port 3306
+![Uploading image.png…]()
+
 ---
 
 ## ✅ Prerequisites
