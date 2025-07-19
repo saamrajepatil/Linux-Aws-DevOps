@@ -1,6 +1,8 @@
  **MySQL to MySQL database migration using AWS Database Migration Service (DMS)**. This includes:
 
 ---
+<img width="1076" height="474" alt="image" src="https://github.com/user-attachments/assets/2a5375dd-ec8f-4cee-bead-2b289031c935" />
+
 
 ## ✅ Scenario
 
