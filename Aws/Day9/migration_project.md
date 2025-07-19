@@ -152,9 +152,7 @@ where schema name is like 'companydb' and Source table name is like '%', include
 
 Transformation rules - 
 where schema name is like 'companydb' and Source table name is like '', convert-lowercase
-
-![Transformation_rule](https://github.com/user-attachments/assets/6c0a0b91-5432-418a-bb68-55bcd4d7e0c1)
-
+<img width="1551" height="731" alt="image" src="https://github.com/user-attachments/assets/87f08dbe-248b-4026-b1dc-4a29f4547371" />
 
 Then
 
