@@ -145,16 +145,16 @@ Add inbound rule in 2 security groups sourcedb sg and target db sg with default 
      * Use wizard  and Add new selection rule.
      * Example: Migrate all tables in `companydb` DB:
 
+
 Selection rules
 where schema name is like 'companydb' and Source table name is like '%', include
+![Table_mapping_selection_rule](https://github.com/user-attachments/assets/f697a75c-c469-4a1c-ab29-c0721a3de400)
+
 Transformation rules - 
 where schema name is like 'companydb' and Source table name is like '', convert-lowercase
 
-<img width="947" height="686" alt="image" src="https://github.com/user-attachments/assets/a7ad8475-0ba9-4d02-9867-0aa443ae7382" />
+![Transformation_rule](https://github.com/user-attachments/assets/6c0a0b91-5432-418a-bb68-55bcd4d7e0c1)
 
-Transformation rule.
-
-<img width="981" height="665" alt="image" src="https://github.com/user-attachments/assets/4289ea9b-9ba4-409c-87db-3795c5aadc36" />
 
 Then
 
@@ -170,7 +170,8 @@ disable pre migration assesment
 * Monitor logs and progress.
 * On success, go to target DB and verify records.
 
-<img width="1591" height="351" alt="image" src="https://github.com/user-attachments/assets/031eb5b1-0670-44a0-97bf-5bc4ca7f07b4" />
+
+![task_completion](https://github.com/user-attachments/assets/7b27140f-0341-4249-8f4e-8b0c7fd63ee0)
 
 
 ---
