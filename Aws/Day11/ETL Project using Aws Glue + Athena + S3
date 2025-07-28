@@ -1,6 +1,6 @@
 **real-world AWS project** using **AWS Glue + Athena + S3**, where we process a Netflix CSV file stored in S3, create a Glue Data Catalog, and query it using Athena. We’ll also integrate an **S3 event notification** to trigger a Lambda (optional for advanced automation).
 
----
+______
 
 ## ✅ Project Goal
 
