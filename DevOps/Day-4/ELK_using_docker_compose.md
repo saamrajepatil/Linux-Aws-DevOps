@@ -1,4 +1,11 @@
 
+We need to choose T2.large instance type 
+
+refer attached doc for detailed steps:
+
+[ELK_final.docx](https://github.com/user-attachments/files/21746789/ELK_final.docx)
+
+
 ✅ Part 1: Prerequisites on Amazon Linux 2
 1.1 Update System and Install Docker
 sudo yum update -y
