@@ -93,5 +93,22 @@ Use Free Tier filters while launching resources (look for “Free tier eligible�
 
 Enable Billing alerts in CloudWatch → Billing → Create Alarm.
 
+___________________
 
+
+How to get the initial $100
+Create a new AWS account using a fresh email ID. 
+Use a credit or debit card that has never been associated with a previous AWS account. 
+The $100 credit is automatically applied upon sign-up. 
+How to earn up to an additional $100
+
+
+Log in to your new AWS account and find the "explore" tab or activity section in the console. 
+
+Complete the required introductory tasks to receive $20 for each one, for a total of up to $100: 
+Launch an EC2 instance 
+Create a budget 
+Build a Lambda function 
+Use Amazon Bedrock playground 
+Create an RDS database 
 
