@@ -95,6 +95,9 @@ Enable Billing alerts in CloudWatch → Billing → Create Alarm.
 
 ___________________
 
+https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/tracking-free-tier-usage.html
+
+______
 
 How to get the initial $100
 Create a new AWS account using a fresh email ID. 
