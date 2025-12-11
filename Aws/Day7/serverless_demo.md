@@ -1,4 +1,189 @@
+simple, practical, step-by-step demo** to create a **serverless architecture** using **API Gateway + AWS Lambda** and test it — *using only the AWS Console* (since you prefer console-based steps).
 
+This demo will create a **REST API** endpoint that triggers a Lambda function.
+It returns:
+`{"message": "Hello from Lambda"}`
+
+---
+
+# ✅ **DEMO: Create & Test API Gateway + Lambda (Serverless Architecture)**
+
+**Total time:** 10–12 minutes
+**Tools:** AWS Console only
+
+---
+
+# **STEP 1 — Create a Lambda Function**
+
+1. Go to **AWS Console → Lambda**
+2. Click **Create function**
+3. Choose:
+
+   * **Author from scratch**
+   * Function name: `helloDemoFunction`
+   * Runtime: **Python 3.12** (or Node.js, your choice)
+   * Architecture: x86_64
+4. Click **Create function**
+
+---
+
+## **STEP 2 — Add Code in Lambda**
+
+### If Python:
+
+Paste this code:
+
+```python
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "body": "Hello from Lambda!"
+    }
+```
+
+Click **Deploy**
+
+---
+
+## **STEP 3 — Test Lambda (Before API Gateway)**
+
+1. Click **Test**
+2. Create a test event → select **Create new event**
+3. Event name: `test1`
+4. Leave JSON as default
+5. Save and click **Test**
+
+You should see a response:
+
+```
+Hello from Lambda!
+```
+
+If this works → continue.
+
+---
+
+# **STEP 4 — Create API Gateway REST API**
+
+1. Go to **API Gateway → APIs**
+2. Click **Create API**
+3. Choose **REST API** (not HTTP API for now — REST is easier to demo)
+4. Click **Build**
+
+In “Create New API”:
+
+* API Name: `LambdaDemoAPI`
+* Endpoint type: **Regional**
+* Click **Create API**
+
+---
+
+# **STEP 5 — Create a Resource**
+
+1. In left menu → **Resources**
+2. Click **Actions → Create Resource**
+3. Resource name: `hello`
+4. Resource path will be: `/hello`
+5. Click **Create Resource**
+
+---
+
+# **STEP 6 — Create GET Method**
+
+1. Select `/hello`
+2. Click **Actions → Create Method**
+3. Choose **GET**
+4. Click the tick ✔️
+
+Configure GET:
+
+* Integration type: **Lambda Function**
+* Region: Select your Lambda region
+* Lambda Function: **helloDemoFunction**
+
+Click **Save** → Allow permissions.
+
+---
+
+# **STEP 7 — Deploy the API**
+
+1. Click **Actions → Deploy API**
+2. Deployment stage: **New stage**
+3. Stage name: `dev`
+4. Click **Deploy**
+
+You will now see an **Invoke URL**, example:
+
+```
+https://abcd1234.execute-api.ap-south-1.amazonaws.com/dev
+```
+
+Your GET URL will be:
+
+```
+https://abcd1234.execute-api.ap-south-1.amazonaws.com/dev/hello
+```
+
+---
+
+# **STEP 8 — Test From Browser or Postman**
+
+Open the full URL in your browser:
+
+```
+https://xxxxxx.execute-api.ap-south-1.amazonaws.com/dev/hello
+```
+
+You should see:
+
+```
+Hello from Lambda!
+```
+
+Congratulations — your **serverless API is working** 🎉
+
+---
+
+# 🧪 **STEP 9 — Add JSON Response (Optional Demo Upgrade)**
+
+Update Lambda code to return JSON:
+
+```python
+import json
+
+def lambda_handler(event, context):
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps({"message": "Hello from Lambda!"})
+    }
+```
+
+Deploy it and test again.
+
+---
+
+# 🚀 **STEP 10 — End-to-End Flow**
+
+**Client → API Gateway → Lambda → Response**
+
+This demo covers:
+
+* Lambda creation
+* Testing Lambda
+* Creating API Gateway REST API
+* Mapping `/hello` GET to Lambda
+* Deploying API
+* Testing the endpoint
+
+---
+
+
+
+
+
+_______________________________________________________________________________________________________________________
+second demo:
 ## 📁 Part 1: Create S3 Static Website
 
 ### 1. Create or use an existing S3 bucket
