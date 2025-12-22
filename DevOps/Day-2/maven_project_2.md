@@ -5,6 +5,7 @@ Petclinic is a Spring Boot application built using Maven or Gradle.
 You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
 
 Create Ec2 t2 micro then download git and JDK17 using yum or dnf.
+sudo yum install java-17-amazon-corretto-devel
 
 then run below commands
 
