@@ -58,9 +58,27 @@ sudo usermod -aG docker $USER
 # Log out & in again or newgrp docker
 ```
 
-**macOS / Windows**
 
-* Install **Docker Desktop** from docker.com and follow GUI steps.
+Step-by-Step Installation Guide om amazon linux 2023 
+
+Update your system packages:
+It is a best practice to update your package cache and installed packages to their latest versions.
+bash
+sudo dnf update -y
+Install Docker:
+Amazon Linux 2023 includes the Moby project's Docker package in its official repositories.
+bash
+sudo dnf install -y docker
+Start and Enable the Docker Service:
+Start the Docker daemon and enable it to run automatically at boot time.
+bash
+sudo systemctl start docker
+sudo systemctl enable docker
+Verify the Installation:
+Check that the Docker service is active and running correctly.
+bash
+sudo systemctl status docker
+docker --version
 
 Verify:
 
@@ -70,6 +88,11 @@ docker run --rm hello-world
 ```
 
 ---
+1)docker run hello-world
+
+
+2) docker run -it ubuntu bash
+
 
 # 4. Core Concepts & Commands (Beginner)
 
