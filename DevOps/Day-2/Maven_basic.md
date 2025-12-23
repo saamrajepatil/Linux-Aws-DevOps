@@ -1,16 +1,24 @@
 ________________________________________
-🧰 What is Maven?
+What is Maven?
+
 Maven is a build automation and project management tool for Java projects, widely used in DevOps pipelines.
 •	Helps manage project builds, dependencies, and documentation.
 •	Uses a Project Object Model (POM) file (pom.xml) to configure builds.
+
 ________________________________________
+
+
 🔍 Why Maven?
+
 •	Dependency Management: Automatically downloads required libraries from central repositories.
 •	Standardization: Enforces a consistent directory and build structure.
 •	Integration: Easily integrates with CI/CD tools like Jenkins.
 •	Reproducibility: Ensures repeatable builds across environments.
+
 ________________________________________
+
 📁 Maven Directory Structure
+
 project-root/
 ├── src/
 │   ├── main/
@@ -21,6 +29,8 @@ project-root/
 └── pom.xml
 ________________________________________
 📘 What is pom.xml?
+
+
 This XML file is the heart of a Maven project.
 Example:
 <project xmlns="http://maven.apache.org/POM/4.0.0">
@@ -58,6 +68,7 @@ Used for extra tasks like compiling code, packaging jars, running tests.
 mvn package
 ________________________________________
 🛠️ Basic Maven Commands
+
 Command	Purpose
 mvn clean	Deletes /target directory
 mvn compile	Compiles source code
@@ -67,11 +78,14 @@ mvn install	Installs to local repo
 mvn deploy	Deploys to remote repo
 ________________________________________
 🔁 Maven Repositories
+
+
 •	Local: On developer machine (~/.m2)
 •	Central: Public repo by Apache
 •	Remote: Internal company repo (e.g., Nexus, Artifactory)
 ________________________________________
 🔗 DevOps Integration
+
 •	Maven can be integrated into:
 o	Jenkins (build job)
 o	GitHub Actions
@@ -79,6 +93,7 @@ o	Docker (packaging and containerizing Maven apps)
 o	SonarQube (code quality)
 ________________________________________
 📦 Maven in CI/CD Pipeline (Example)
+
 1.	Developer pushes code to GitHub.
 2.	Jenkins pulls code.
 3.	Jenkins runs mvn clean install.
@@ -87,6 +102,7 @@ ________________________________________
 6.	Image pushed to ECR/DockerHub.
 ________________________________________
 💡 Best Practices
+
 •	Always version dependencies.
 •	Avoid SNAPSHOT versions in production.
 •	Use dependency management to centralize versions.
