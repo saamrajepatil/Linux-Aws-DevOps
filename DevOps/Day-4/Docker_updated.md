@@ -102,6 +102,10 @@ docker run --rm hello-world
 
 2) docker run -it ubuntu bash
 
+<img width="916" height="347" alt="image" src="https://github.com/user-attachments/assets/ef06beb7-8462-46eb-8c28-6ed80a4bf69b" />
+<img width="971" height="522" alt="image" src="https://github.com/user-attachments/assets/addec09e-233e-49bd-a32c-e6cda2ec8058" />
+<img width="889" height="508" alt="image" src="https://github.com/user-attachments/assets/ab3c7b69-af83-4e6d-ad43-a9e9af5e90cb" />
+
 
 # 4. Core Concepts & Commands (Beginner)
 
