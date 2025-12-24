@@ -110,13 +110,21 @@ Dockerfile for Jenkins image
 We used JDK as a base image because Jenkins's pre-requisite is JDK after that we added a command called MAINTAINER which indicates the author or owner of the docker file and we added the ENV variable where we set the path for the Jenkins and by using RUN command we are creating the path and by using ADD we are downloading the Jenkins and starting the .war file with the help of CMD command.
 
 FROM openjdk:11-jdk
+
 MAINTAINER GFG author
+
 LABEL env=production
+
 ENV apparea /data/app
+
 RUN mkdir -p $apparea
+
 ADD https://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war/2.397/jenkins.war $apparea
+
 WORKDIR $apparea
+
 EXPOSE 8080
+
 CMD ["java","-jar","jenkins.war"]
 
 # 4. Core Concepts & Commands (Beginner)
