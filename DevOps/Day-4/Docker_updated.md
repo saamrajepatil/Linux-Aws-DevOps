@@ -258,19 +258,24 @@ docker run -d --network mynet --name app2 myother
 
 ---
 Method 2: Manual Installation (for all users)
+
 If the package manager method is not preferred, you can manually download the binary from the Docker Compose GitHub releases page. 
+
 Create the necessary directory for the plugin:
-bash
+
 sudo mkdir -p /usr/libexec/docker/cli-plugins/
+
 Download the latest Docker Compose binary:
-bash
+
 sudo curl -SL https://github.com/docker/compose/releases/latest/download/docker-compose-linux-$(uname -m) -o /usr/libexec/docker/cli-plugins/docker-compose
+
 This command automatically detects your system's architecture using $(uname -m).
 Apply executable permissions to the binary:
-bash
+
 sudo chmod +x /usr/libexec/docker/cli-plugins/docker-compose
+
 Verify the installation:
-bash
+
 docker compose version
 This method also installs the V2 plugin, allowing use of the docker compose command. 
 
