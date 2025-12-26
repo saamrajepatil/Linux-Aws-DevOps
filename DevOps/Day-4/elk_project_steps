@@ -147,5 +147,7 @@ Component	Access
 Kibana	http://<EC2-IP>:5601
 Elasticsearch	http://<EC2-IP>:9200
 Logstash	Port 5044 for Beats input
+_________________________
+
 
 
