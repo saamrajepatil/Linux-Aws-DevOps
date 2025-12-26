@@ -357,6 +357,50 @@ docker push <aws_account_id>.dkr.ecr.us-east-1.amazonaws.com/myapp:1.0
 
 ---
 
+
+
+📦 Part 1: Java Application in Docker
+🔧 Files to Create:
+HelloWorld.java
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello from Java in Docker!");
+    }
+}
+
+
+dockerfile
+
+FROM openjdk:17
+WORKDIR /app
+COPY . .
+RUN javac HelloWorld.java
+CMD ["java", "HelloWorld"]
+✅ Steps:
+1.	mkdir java-docker-app && cd java-docker-app
+2.	Add above files.
+3.	Build image:
+docker build -t your_dockerhub_username/java-docker-app .
+4.	Run container:
+docker run your_dockerhub_username/java-docker-app
+5.	Push to DockerHub:
+bash
+docker login
+docker push your_dockerhub_username/java-docker-app
+________________________________________
+
+
+💡 Summary in Simple Terms for above project:
+Dockerfile Line	What It Does
+FROM openjdk:17	Use Java 17 environment
+WORKDIR /app	Use /app as the working directory
+COPY . .	Copy files from current folder to /app
+RUN javac HelloWorld.java	Compile Java file to bytecode
+CMD ["java", "HelloWorld"]	Run Java program inside container
+
+
+
 # 12. Debugging & Troubleshooting
 
 * `docker logs <container>` — check container stdout/stderr
