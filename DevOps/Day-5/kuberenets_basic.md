@@ -6,19 +6,24 @@ in 2014, google introduce k8s as an open source platform written in Golang and l
 to CNCF (cloud native computing foundation)
 
 • Kubernetes playground
+
 • play with k8s
 • GKS google
 • AKS azure
 • EKS amazon
+
 Problem with scaling up the container:
+
 • can't communicate with each other
 • autoscaling
 • load balancing
 • container had to be manage carefully
+
 Terms to know:
 • monolithic application: single stone application, every
 • Microservice: each task is deploy in diff-2 services, connect with each other via API
 • Orchestration tool = container management tool
+
 Kubernetes = k8s
 k8s is an open source container management tool which automates container deployment ,
 container scaling, load balancing
