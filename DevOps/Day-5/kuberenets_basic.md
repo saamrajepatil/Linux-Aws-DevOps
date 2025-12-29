@@ -39,6 +39,17 @@ feature of k8s:
 • platform independent (cloud / virtual / physical)
 • fault tolerance (node / pod failure)
 
+🚀 Fastest k3s Install (1 command)
+On EC2 / Linux VM
+curl -sfL https://get.k3s.io | sh -
+
+
+That’s it ✅
+Your Kubernetes cluster is READY in 1–2 minutes
+
+🔍 Verify
+kubectl get nodes
+kubectl get pods -A
 
 Refer PDF for more details
 
