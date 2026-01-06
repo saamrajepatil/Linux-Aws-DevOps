@@ -37,15 +37,6 @@ sudo usermod -aG docker ec2-user
 newgrp docker
 ```
 
-### Ubuntu
-
-```bash
-sudo apt update
-sudo apt install docker.io -y
-sudo systemctl start docker
-sudo usermod -aG docker $USER
-newgrp docker
-```
 
 ---
 
@@ -58,18 +49,6 @@ sudo sysctl -w vm.max_map_count=262144
 sudo sysctl -w fs.file-max=65536
 ```
 
-Make it permanent:
-
-```bash
-sudo nano /etc/sysctl.conf
-```
-
-Add:
-
-```ini
-vm.max_map_count=262144
-fs.file-max=65536
-```
 
 Apply:
 
@@ -146,7 +125,7 @@ sudo yum install git maven -y   # Amazon Linux
 
 ```bash
 git clone https://github.com/SonarSource/sonar-scanning-examples.git
-cd sonar-scanning-examples/sonarqube-scanner-maven
+cd sonar-scanning-examples/sonar-scanner-maven/maven-basic
 ```
 
 ---
@@ -168,36 +147,20 @@ mvn sonar:sonar \
   -Dsonar.login=<TOKEN>
 ```
 
+Updated command :
+
+mvn clean verify sonar:sonar -Dsonar.projectKey=demo -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqa_8239819e0b21dea42fb1375e6b0fbb05fb1bb485
+
 ✔️ Analysis will appear in SonarQube UI
 
----
+<img width="1600" height="797" alt="image" src="https://github.com/user-attachments/assets/0d6c5055-1be1-47ad-bd79-675bc9338231" />
 
-# ⚠️ Important Notes for 1-Core Instances
 
-| Item             | Advice                    |
-| ---------------- | ------------------------- |
-| DB               | Use embedded DB (default) |
-| Concurrent scans | ❌ Avoid                   |
-| Plugins          | ❌ Don’t install           |
-| Docker Compose   | ❌ Heavy                   |
-| JVM tuning       | Optional                  |
+
 
 ---
 
-# 🔹 Optional: Reduce Memory Further (If Instance Crashes)
 
-```bash
-docker run -d \
---name sonarqube \
--p 9000:9000 \
--e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
--e SONAR_WEB_JVM_OPTS="-Xmx512m -Xms256m" \
-sonarqube:9.9-community
-```
-
----
-
-# 🎓 How to Explain to Students (Simple Line)
 
 > “SonarQube analyzes source code to detect bugs, vulnerabilities, and code smells before code goes to production.”
 
@@ -212,10 +175,4 @@ sonarqube:9.9-community
 
 ---
 
-If you want, I can also:
 
-* Give **SonarQube + Jenkins demo pipeline**
-* Share **common interview questions**
-* Provide **slides structure** for teaching
-
-Just tell me 👍
