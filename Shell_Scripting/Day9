@@ -151,6 +151,7 @@ ___________________________
 ### ✅ What is a Cron Job?
 
 A **cron job** is a time-based job scheduler in Unix/Linux. It's used to run commands or scripts automatically at scheduled times and intervals.
+sudo yum install -y cronie
 
 ### ✅ Cron Syntax
 
