@@ -38,3 +38,157 @@ Practical Use Cases of AWS CloudWatch:
     Log Analysis: Use CloudWatch Logs Insights to analyze log data, identify patterns, and troubleshoot issues in real-time.
 
     Billing and Cost Monitoring: CloudWatch can help you monitor your AWS billing and usage patterns, enabling you to optimize costs.
+
+
+    _________________________
+
+    Use case /project
+    Disk alert by installing the cloudwatch agent 
+
+
+    
+1️⃣ Install CloudWatch Agent
+
+sudo yum install amazon-cloudwatch-agent -y
+
+Verify:
+
+rpm -qa | grep cloudwatch
+
+
+---
+
+2️⃣ Create Simple Configuration File
+
+Create config file:
+
+sudo vi /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+
+Paste this working configuration:
+
+{
+ "metrics": {
+   "append_dimensions": {
+     "InstanceId": "${aws:InstanceId}"
+   },
+   "metrics_collected": {
+     "cpu": {
+       "measurement": [
+         "cpu_usage_idle",
+         "cpu_usage_iowait",
+         "cpu_usage_user",
+         "cpu_usage_system"
+       ],
+       "totalcpu": true
+     },
+     "mem": {
+       "measurement": [
+         "mem_used_percent"
+       ]
+     },
+     "disk": {
+       "measurement": [
+         "used_percent"
+       ],
+       "resources": [
+         "/"
+       ]
+     }
+   }
+ }
+}
+
+This collects:
+
+CPU usage
+
+Memory usage
+
+Disk usage
+
+
+
+---
+
+3️⃣ Start CloudWatch Agent
+
+Run:
+
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
+-a fetch-config \
+-m ec2 \
+-c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+-s
+
+
+---
+
+4️⃣ Verify Agent Running
+
+sudo systemctl status amazon-cloudwatch-agent
+
+Check logs if needed:
+
+sudo tail -f /opt/aws/amazon-cloudwatch-agent/logs/amazon-cloudwatch-agent.log
+
+
+---
+
+5️⃣ Check Metrics in AWS
+
+Go to Amazon CloudWatch
+
+Path:
+
+Metrics
+ → CWAgent
+ → InstanceId
+
+You will see metrics like:
+
+cpu_usage_idle
+mem_used_percent
+disk_used_percent
+
+
+---
+
+6️⃣ Create Disk Alert
+
+Create alarm in Amazon CloudWatch:
+
+Metric:
+
+CWAgent → disk_used_percent
+
+Condition example:
+
+>= 80%
+
+Notification:
+
+Use Amazon Simple Notification Service for email or Slack.
+
+
+---
+
+✅ Real production tip
+
+Most DevOps teams add inode monitoring also, because disks fail due to inode exhaustion even when disk space looks fine.
+
+Example metric:
+
+disk_inodes_free
+
+
+---
+
+If you want, I can also show a very useful production setup:
+
+✔ CloudWatch automatically alerts when
+
+Disk > 80%
+
+Memory > 85%
+
+CPU > 90%
