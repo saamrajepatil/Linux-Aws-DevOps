@@ -62,7 +62,7 @@ rpm -qa | grep cloudwatch
 
 Create config file:
 
-sudo vi /opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json
+sudo vi /opt/aws/amazon-cloudwatch-agent/bin/config.json
 
 Paste this working configuration:
 
@@ -117,7 +117,7 @@ Run:
 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl \
 -a fetch-config \
 -m ec2 \
--c file:/opt/aws/amazon-cloudwatch-agent/etc/amazon-cloudwatch-agent.json \
+-c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json \
 -s
 
 
