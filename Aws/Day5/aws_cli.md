@@ -51,16 +51,24 @@ aws ec2 describe-regions: List all available AWS regions.
 
 Amazon S3 (Simple Storage Service) 
 aws s3 ls: List all S3 buckets in your account.
+
 aws s3 mb s3://<bucket-name>: Make (create) a new S3 bucket.
+
 aws s3 cp <local-file> s3://<bucket-name>/: Copy a file from your local system to an S3 bucket.
+
 aws s3 sync <local-directory> s3://<bucket-name>/: Sync an entire directory to an S3 bucket.
+
 aws s3 rm s3://<bucket-name>/<file-name>: Delete an object from a bucket. 
 
 Amazon EC2 (Elastic Compute Cloud) 
 aws ec2 describe-instances: Describe all EC2 instances (can use filters to narrow results).
+
 aws ec2 start-instances --instance-ids <instance-id>: Start a specific EC2 instance.
+
 aws ec2 stop-instances --instance-ids <instance-id>: Stop a specific EC2 instance.
+
 aws ec2 create-key-pair --key-name <key-name>: Create a new EC2 key pair.
+
 aws ec2 describe-security-groups: View details about your security groups. 
 
 Other Services
